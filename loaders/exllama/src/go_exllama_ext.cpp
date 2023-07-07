@@ -24,9 +24,8 @@
 #include "cuda_func/q4_mlp.cuh"
 
 
-extern "C" { //  BoDaay: added
-#include "go_exllama.h"
-}
+#include "go_exllama.h" //  BoDaay: added
+
 
 // Check CUDA return code. We don't want to include Torch headers in the .cu files because parsing them adds almost a
 // minute to the compile time on a 12900K. Also passing exceptions back to Python is super tricky, so in place of
