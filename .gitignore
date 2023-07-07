@@ -1,3 +1,4 @@
+CudaSetup/temp/
 libtorch/src/*
 
 loaders/exllama/repo/*

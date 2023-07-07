@@ -19,3 +19,5 @@ git_clone_or_pull() {
 
 
 git_clone_or_pull "$repo" repo
+
+echo "copy the files from "repo" to "src", and modify the code based on what you need"
