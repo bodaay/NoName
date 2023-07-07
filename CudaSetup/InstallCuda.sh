@@ -20,6 +20,6 @@ if [ -f "$FULL_PATH" ]; then
   sudo sh "$FULL_PATH" $INSTALLER_PARAMS
 
   # Cleanup: Remove temporary folder
-  echo "Cleaning up..."
-  rm -rf "$TEMP_DIR"
+  # echo "Cleaning up..."
+  # rm -rf "$TEMP_DIR"
 fi
