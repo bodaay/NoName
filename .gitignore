@@ -7,5 +7,7 @@ loaders/exllama/build/*
 loaders/autogptq/repo/*
 loaders/autogptq/build/*
 
+loaders/gotorch/build/
+
 
 loaders/out/*
