@@ -2,7 +2,7 @@
 
 # PyTorch 2.01,Linux,LibTorch,c++/java,CUDA 11.8,cxx11 ABI
 libtorchURL="https://download.pytorch.org/libtorch/cu118/libtorch-cxx11-abi-shared-with-deps-2.0.1%2Bcu118.zip"
-extractPath="libtorch_2.01_linux_cu118"
+extractPath="src"
 
 # Below Written by ChatGPT 3.5, this function will check if unzip available, check if folder exists before, download the zip file and make sure the root folder of it 'libtorch' is removed and all of its content placed in our folder
 download_and_extract() {

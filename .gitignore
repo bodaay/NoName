@@ -1,2 +1,7 @@
-libtorch/libtorch*
+libtorch/src/*
+
+loaders/exllama/src/*
+loaders/exllama/build/*
+
+
 
