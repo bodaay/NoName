@@ -8,3 +8,4 @@ loaders/autogptq/repo/*
 loaders/autogptq/build/*
 
 
+loaders/out/*

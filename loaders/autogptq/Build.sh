@@ -1,8 +1,8 @@
 #!/bin/bash
 
 CUDAVERSON="11.8"
-rm -rf build
-mkdir build
+# rm -rf build
+mkdir -p build
 cd build
 
 
@@ -10,4 +10,4 @@ cmake -DCUDA_BIN_PATH=/usr/local/cuda-$CUDAVERSON/bin/ -DCUDA_TOOLKIT_ROOT_DIR=/
 cmake --build . --config Release && mv libautogptq_cuda_64.so libautogptq_cuda_256.so ../../lib/
 
 #cleanup
-cd .. && rm -rf build
+# cd .. && rm -rf build

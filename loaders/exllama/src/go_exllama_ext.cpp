@@ -23,9 +23,17 @@
 #include "cuda_func/q4_attn.cuh"
 #include "cuda_func/q4_mlp.cuh"
 
+
+extern "C" { //  BoDaay: added
+#include "go_exllama.h"
+}
+
 // Check CUDA return code. We don't want to include Torch headers in the .cu files because parsing them adds almost a
 // minute to the compile time on a 12900K. Also passing exceptions back to Python is super tricky, so in place of
 // exceptions, CUDA functions return with a cudaError_t which we can parse and dump to the console.
+
+
+
 
 void check_cuda(cudaError_t ret)
 {
@@ -117,6 +125,7 @@ void set_tuning_params
 
 void cleanup()
 {
+    std::cout << "Hello, World!" << std::endl;
     cleanup_buffers_cuda();
     g_q4_free_matrices();
 }

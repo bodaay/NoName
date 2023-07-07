@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 
 # Add all CPP files to a variable
 set(SOURCES
-  src/exllama_ext.cpp
+  src/go_exllama_ext.cpp
   src/cuda_buffers.cu
   src/cuda_func/q4_matrix.cu
   src/cuda_func/q4_matmul.cu
