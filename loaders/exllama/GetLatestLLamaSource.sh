@@ -18,5 +18,4 @@ git_clone_or_pull() {
 }
 
 
-git_clone_or_pull "$repo" src
-
+git_clone_or_pull "$repo" repo

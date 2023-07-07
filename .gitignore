@@ -1,6 +1,6 @@
 libtorch/src/*
 
-loaders/exllama/src/*
+loaders/exllama/repo/*
 loaders/exllama/build/*
 
 
