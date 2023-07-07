@@ -2,7 +2,7 @@
 
 # Written by ChatGPT 3.5
 
-repo="https://github.com/turboderp/exllama"
+repo="https://github.com/PanQiWei/AutoGPTQ"
 git_clone_or_pull() {
     local repo_url="$1"
     local folder="$2"
@@ -20,4 +20,4 @@ git_clone_or_pull() {
 
 git_clone_or_pull "$repo" repo
 
-echo "copy the files from 'repo'/exllama_ext/ to 'src', and modify the code based on what you need"
+echo "copy the files from 'repo'/autogptq_cuda/ to 'src', and modify the code based on what you need"
