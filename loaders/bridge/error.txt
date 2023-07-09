@@ -1,5 +1,0 @@
--- Configuring done
--- Generating done
--- Build files have been written to: /home/khalefa/projects/NoName/loaders/bridge/build
-Consolidate compiler generated dependencies of target Bridge
-[ 25%] Linking CXX executable Bridge
