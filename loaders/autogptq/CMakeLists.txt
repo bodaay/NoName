@@ -16,10 +16,10 @@ set(SOURCES_256
 )
 
 # Create a library for each set of source files
-add_library(autogptq_cuda_64 SHARED ${SOURCES_64})
+add_library(autogptq_cuda_64 STATIC ${SOURCES_64})
 target_link_libraries(autogptq_cuda_64 "${TORCH_LIBRARIES}")
 set_property(TARGET autogptq_cuda_64 PROPERTY CXX_STANDARD 17)
 
-add_library(autogptq_cuda_256 SHARED ${SOURCES_256})
+add_library(autogptq_cuda_256 STATIC ${SOURCES_256})
 target_link_libraries(autogptq_cuda_256 "${TORCH_LIBRARIES}")
 set_property(TARGET autogptq_cuda_256 PROPERTY CXX_STANDARD 17)

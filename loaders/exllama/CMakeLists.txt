@@ -27,6 +27,6 @@ set(SOURCES
 
 
 # Create a library instead of an executable
-add_library(exllama SHARED ${SOURCES})
+add_library(exllama STATIC ${SOURCES})
 target_link_libraries(exllama "${TORCH_LIBRARIES}")
 set_property(TARGET exllama PROPERTY CXX_STANDARD 17)
