@@ -1,8 +1,8 @@
 #!/bin/bash                                                                                                                  
 
 # Set the paths to the protoc compiler and the grpc_cpp_plugin                                                               
-PROTOC_PATH="/usr/local/bin/protoc"                                                                                                
-GRPC_CPP_PLUGIN_PATH="/usr/local/bin/grpc_cpp_plugin"                                                                          
+PROTOC_PATH="../PACKAGES/protobuf/bin/protoc"                                                                                                
+GRPC_CPP_PLUGIN_PATH="../PACKAGES/grpc/bin/grpc_cpp_plugin"                                                                          
                                                                                                                                 
 # Set the path to the directory containing your_service.proto                                                                
 PROTO_FILE_DIR="./"                                                                                      

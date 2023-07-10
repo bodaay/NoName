@@ -7,7 +7,7 @@ mkdir -p build
 cd build
 
 
-cmake ..
+cmake -DCMAKE_PREFIX_PATH=/home/khalefa/projects/NoName/loaders/bridge/PACKAGES/grpc ..
 cmake --build . --config Release 
 
 #cleanup
