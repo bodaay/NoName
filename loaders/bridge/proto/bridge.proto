@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package bridgeserver;
 
+option go_package = "bodaay/bridgeserver"; // replace with your package
+
+
 service BridgeServerService {
   rpc SayHello (HelloRequest) returns (HelloReply) {};
 

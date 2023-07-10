@@ -156,13 +156,13 @@ const char descriptor_table_protodef_bridge_2eproto[] PROTOBUF_SECTION_VARIABLE(
     "ver.HelloRequest\032\030.bridgeserver.HelloRep"
     "ly\"\000\022K\n\rStreamNumbers\022\033.bridgeserver.Str"
     "eamRequest\032\031.bridgeserver.StreamReply\"\0000"
-    "\001b\006proto3"
+    "\001B\025Z\023bodaay/bridgeserverb\006proto3"
 };
 static ::absl::once_flag descriptor_table_bridge_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_bridge_2eproto = {
     false,
     false,
-    329,
+    352,
     descriptor_table_protodef_bridge_2eproto,
     "bridge.proto",
     &descriptor_table_bridge_2eproto_once,

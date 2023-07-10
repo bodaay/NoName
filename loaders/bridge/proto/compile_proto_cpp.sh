@@ -8,8 +8,12 @@ GRPC_CPP_PLUGIN_PATH="../PACKAGES/grpc/bin/grpc_cpp_plugin"
 PROTO_FILE_DIR="./"                                                                                      
                                                                                                                                 
 # Set the output directory for the generated cod
-OUTPUT_DIR="../src/pb/"
+OUTPUT_DIR_CPP="../src/pb/"
+OUTPUT_DIR_GO="../test-go-clinet/pb/" # specify your output path for Go files
 
-$PROTOC_PATH --proto_path=$PROTO_FILE_DIR --cpp_out=$OUTPUT_DIR --grpc_out=$OUTPUT_DIR --plugin=protoc-gen-grpc=$GRPC_CPP_PLUGIN_PATH bridge.proto 
+
+$PROTOC_PATH --proto_path=$PROTO_FILE_DIR --cpp_out=$OUTPUT_DIR_CPP --grpc_out=$OUTPUT_DIR_CPP --plugin=protoc-gen-grpc=$GRPC_CPP_PLUGIN_PATH bridge.proto 
 
 
+# Generate Go files
+$PROTOC_PATH --proto_path=$PROTO_FILE_DIR --go_out=$OUTPUT_DIR_GO --go_opt paths=source_relative --go-grpc_out=$OUTPUT_DIR_GO --go-grpc_opt paths=source_relative bridge.proto
