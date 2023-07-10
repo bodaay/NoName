@@ -6,7 +6,7 @@ GRPC_VERSION="v1.56.0"
 sudo apt-get update
 
 # Install dependencies
-for pkg in autoconf automake cmake libtool curl make g++ unzip build-essential pkg-config libssl-dev git;
+for pkg in build-essential autoconf libtool pkg-config;
 do
     if ! dpkg -s $pkg >/dev/null 2>&1;
     then
@@ -49,16 +49,11 @@ cd grpc
 mkdir -p cmake/build 
 cd cmake/build
 # for SSL, I dont need to be local, we just need to make sure we have installed: libssl-dev,libcrypt-dev,libcrypto++-dev
-cmake ../.. -DgRPC_INSTALL=ON                \
-              -DCMAKE_BUILD_TYPE=Release       \
-              -DgRPC_ABSL_PROVIDER=module     \
-              -DgRPC_CARES_PROVIDER=module    \
-              -DgRPC_PROTOBUF_PROVIDER=module \
-              -DgRPC_RE2_PROVIDER=module      \
-              -DgRPC_SSL_PROVIDER=packages      \
-              -DgRPC_ZLIB_PROVIDER=module     \
-              -DCMAKE_CXX_STANDARD=17       \
-              -DCMAKE_INSTALL_PREFIX=../../../$INSTALL_FOLDER/grpc 
+
+cmake -DgRPC_INSTALL=ON \
+      -DgRPC_BUILD_TESTS=OFF \
+      -DCMAKE_INSTALL_PREFIX=../../../$INSTALL_FOLDER/grpc \
+      ../..
 
 make -j 10
 make install
