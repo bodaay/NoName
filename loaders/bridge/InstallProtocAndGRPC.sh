@@ -6,7 +6,7 @@ GRPC_VERSION="v1.56.0"
 sudo apt-get update
 
 # Install dependencies
-for pkg in autoconf automake libtool curl make g++ unzip build-essential pkg-config libcrypt-dev libcrypto++-dev libssl-dev git;
+for pkg in autoconf automake cmake libtool curl make g++ unzip build-essential pkg-config libcrypt-dev libcrypto++-dev libssl-dev git;
 do
     if ! dpkg -s $pkg >/dev/null 2>&1;
     then

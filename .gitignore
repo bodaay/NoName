@@ -12,6 +12,6 @@ loaders/gotorch/build/
 
 loaders/out/*
 
-loaders/bridge/repo/*
+loaders/bridge/grpc/*
 loaders/bridge/build/*
 loaders/bridge/PACKAGES/

@@ -3,19 +3,29 @@ project(Bridge)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(OPENSSL_USE_STATIC_LIBS TRUE)
+# set(OPENSSL_USE_STATIC_LIBS TRUE)
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
+# set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_PREFIX_PATH "PACKAGES/grpc/lib/cmake/absl/")
+find_package(absl CONFIG REQUIRED)
+# set(CMAKE_PREFIX_PATH "PACKAGES/grpc/lib/cmake/utf8_range/")
+# find_package(utf8_range CONFIG REQUIRED)
 
-# set(OPENSSL_SSL_LIBRARY /usr/lib/x86_64-linux-gnu/libssl.so)                                                                                                                                                                                                                                              
-# set(OPENSSL_CRYPTO_LIBRARY /usr/lib/x86_64-linux-gnu/libcrypto.so)                                                                                                                                                                                                                                        
-find_package(OpenSSL REQUIRED)  
-# Protobuf
-set(protobuf_MODULE_COMPATIBLE TRUE)
+set(CMAKE_PREFIX_PATH "PACKAGES/grpc/lib/cmake/protobuf/")
 find_package(Protobuf CONFIG REQUIRED)
+set(CMAKE_PREFIX_PATH "PACKAGES/grpc/lib/cmake/grpc/")
 find_package(gRPC CONFIG REQUIRED)
 
-# gRPC
+# set(OPENSSL_ROOT_DIR /usr/lib/x86_64-linux-gnu/)
+# set(OPENSSL_LIBRARIES /usr/lib/x86_64-linux-gnu/)
+find_package(OpenSSL REQUIRED)  
+if(OpenSSL_FOUND)
+    include_directories(${OPENSSL_INCLUDE_DIR})
+    message(STATUS "OpenSSL SSL Library: ${OPENSSL_SSL_LIBRARY}")
+    message(STATUS "OpenSSL Crypto Library: ${OPENSSL_CRYPTO_LIBRARY}")
+
+endif()
+
 
 set(_GRPC_GRPCPP gRPC::grpc++)
 set(_PROTOBUF_LIBPROTOBUF protobuf::libprotobuf)
@@ -31,4 +41,4 @@ message(STATUS "Protobuf compiler: ${Protobuf_PROTOC_EXECUTABLE}")
 
 
 add_executable(Bridge src/bridge.cpp src/pb/bridge.pb.cc src/pb/bridge.grpc.pb.cc)
-target_link_libraries(Bridge ${_REFLECTION} ${_GRPC_GRPCPP} ${_PROTOBUF_LIBPROTOBUF} OpenSSL::SSL OpenSSL::Crypto)
+target_link_libraries(Bridge ${_GRPC_GRPCPP} ${_REFLECTION} ${_PROTOBUF_LIBPROTOBUF} OpenSSL::Crypto OpenSSL::SSL)

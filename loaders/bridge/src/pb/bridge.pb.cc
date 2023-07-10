@@ -4,238 +4,195 @@
 #include "bridge.pb.h"
 
 #include <algorithm>
-#include "google/protobuf/io/coded_stream.h"
-#include "google/protobuf/extension_set.h"
-#include "google/protobuf/wire_format_lite.h"
-#include "google/protobuf/descriptor.h"
-#include "google/protobuf/generated_message_reflection.h"
-#include "google/protobuf/reflection_ops.h"
-#include "google/protobuf/wire_format.h"
-// @@protoc_insertion_point(includes)
 
-// Must be included last.
-#include "google/protobuf/port_def.inc"
+#include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/generated_message_reflection.h>
+#include <google/protobuf/reflection_ops.h>
+#include <google/protobuf/wire_format.h>
+// @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
+
 PROTOBUF_PRAGMA_INIT_SEG
+
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = ::PROTOBUF_NAMESPACE_ID::internal;
+namespace _pbi = _pb::internal;
+
 namespace bridgeserver {
-template <typename>
 PROTOBUF_CONSTEXPR HelloRequest::HelloRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.name_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct HelloRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR HelloRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR HelloRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~HelloRequestDefaultTypeInternal() {}
   union {
     HelloRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HelloRequestDefaultTypeInternal _HelloRequest_default_instance_;
-template <typename>
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HelloRequestDefaultTypeInternal _HelloRequest_default_instance_;
 PROTOBUF_CONSTEXPR HelloReply::HelloReply(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.message_)*/ {
-    &::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized {}
-  }
-
+    /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct HelloReplyDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR HelloReplyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR HelloReplyDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~HelloReplyDefaultTypeInternal() {}
   union {
     HelloReply _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HelloReplyDefaultTypeInternal _HelloReply_default_instance_;
-template <typename>
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HelloReplyDefaultTypeInternal _HelloReply_default_instance_;
 PROTOBUF_CONSTEXPR StreamRequest::StreamRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.limit_)*/ 0
-
+    /*decltype(_impl_.limit_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct StreamRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR StreamRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR StreamRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~StreamRequestDefaultTypeInternal() {}
   union {
     StreamRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StreamRequestDefaultTypeInternal _StreamRequest_default_instance_;
-template <typename>
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StreamRequestDefaultTypeInternal _StreamRequest_default_instance_;
 PROTOBUF_CONSTEXPR StreamReply::StreamReply(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.number_)*/ 0
-
+    /*decltype(_impl_.number_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct StreamReplyDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR StreamReplyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR StreamReplyDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~StreamReplyDefaultTypeInternal() {}
   union {
     StreamReply _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StreamReplyDefaultTypeInternal _StreamReply_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StreamReplyDefaultTypeInternal _StreamReply_default_instance_;
 }  // namespace bridgeserver
 static ::_pb::Metadata file_level_metadata_bridge_2eproto[4];
-static constexpr const ::_pb::EnumDescriptor**
-    file_level_enum_descriptors_bridge_2eproto = nullptr;
-static constexpr const ::_pb::ServiceDescriptor**
-    file_level_service_descriptors_bridge_2eproto = nullptr;
-const ::uint32_t TableStruct_bridge_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
-    protodesc_cold) = {
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloRequest, _impl_.name_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloReply, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloReply, _impl_.message_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamRequest, _impl_.limit_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamReply, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamReply, _impl_.number_),
-};
+static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_bridge_2eproto = nullptr;
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_bridge_2eproto = nullptr;
 
-static const ::_pbi::MigrationSchema
-    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        { 0, -1, -1, sizeof(::bridgeserver::HelloRequest)},
-        { 9, -1, -1, sizeof(::bridgeserver::HelloReply)},
-        { 18, -1, -1, sizeof(::bridgeserver::StreamRequest)},
-        { 27, -1, -1, sizeof(::bridgeserver::StreamReply)},
+const uint32_t TableStruct_bridge_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloRequest, _impl_.name_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloReply, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::HelloReply, _impl_.message_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamRequest, _impl_.limit_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamReply, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::bridgeserver::StreamReply, _impl_.number_),
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, -1, sizeof(::bridgeserver::HelloRequest)},
+  { 7, -1, -1, sizeof(::bridgeserver::HelloReply)},
+  { 14, -1, -1, sizeof(::bridgeserver::StreamRequest)},
+  { 21, -1, -1, sizeof(::bridgeserver::StreamReply)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::bridgeserver::_HelloRequest_default_instance_._instance,
-    &::bridgeserver::_HelloReply_default_instance_._instance,
-    &::bridgeserver::_StreamRequest_default_instance_._instance,
-    &::bridgeserver::_StreamReply_default_instance_._instance,
-};
-const char descriptor_table_protodef_bridge_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\014bridge.proto\022\014bridgeserver\"\034\n\014HelloReq"
-    "uest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007mess"
-    "age\030\001 \001(\t\"\036\n\rStreamRequest\022\r\n\005limit\030\001 \001("
-    "\005\"\035\n\013StreamReply\022\016\n\006number\030\001 \001(\0052\246\001\n\023Bri"
-    "dgeServerService\022B\n\010SayHello\022\032.bridgeser"
-    "ver.HelloRequest\032\030.bridgeserver.HelloRep"
-    "ly\"\000\022K\n\rStreamNumbers\022\033.bridgeserver.Str"
-    "eamRequest\032\031.bridgeserver.StreamReply\"\0000"
-    "\001b\006proto3"
-};
-static ::absl::once_flag descriptor_table_bridge_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_bridge_2eproto = {
-    false,
-    false,
-    329,
-    descriptor_table_protodef_bridge_2eproto,
-    "bridge.proto",
-    &descriptor_table_bridge_2eproto_once,
-    nullptr,
-    0,
-    4,
-    schemas,
-    file_default_instances,
-    TableStruct_bridge_2eproto::offsets,
-    file_level_metadata_bridge_2eproto,
-    file_level_enum_descriptors_bridge_2eproto,
-    file_level_service_descriptors_bridge_2eproto,
+  &::bridgeserver::_HelloRequest_default_instance_._instance,
+  &::bridgeserver::_HelloReply_default_instance_._instance,
+  &::bridgeserver::_StreamRequest_default_instance_._instance,
+  &::bridgeserver::_StreamReply_default_instance_._instance,
 };
 
-// This function exists to be marked as weak.
-// It can significantly speed up compilation by breaking up LLVM's SCC
-// in the .pb.cc translation units. Large translation units see a
-// reduction of more than 35% of walltime for optimized builds. Without
-// the weak attribute all the messages in the file, including all the
-// vtables and everything they use become part of the same SCC through
-// a cycle like:
-// GetMetadata -> descriptor table -> default instances ->
-//   vtables -> GetMetadata
-// By adding a weak function here we break the connection from the
-// individual vtables back into the descriptor table.
+const char descriptor_table_protodef_bridge_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\014bridge.proto\022\014bridgeserver\"\034\n\014HelloReq"
+  "uest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007mess"
+  "age\030\001 \001(\t\"\036\n\rStreamRequest\022\r\n\005limit\030\001 \001("
+  "\005\"\035\n\013StreamReply\022\016\n\006number\030\001 \001(\0052\246\001\n\023Bri"
+  "dgeServerService\022B\n\010SayHello\022\032.bridgeser"
+  "ver.HelloRequest\032\030.bridgeserver.HelloRep"
+  "ly\"\000\022K\n\rStreamNumbers\022\033.bridgeserver.Str"
+  "eamRequest\032\031.bridgeserver.StreamReply\"\0000"
+  "\001b\006proto3"
+  ;
+static ::_pbi::once_flag descriptor_table_bridge_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_bridge_2eproto = {
+    false, false, 329, descriptor_table_protodef_bridge_2eproto,
+    "bridge.proto",
+    &descriptor_table_bridge_2eproto_once, nullptr, 0, 4,
+    schemas, file_default_instances, TableStruct_bridge_2eproto::offsets,
+    file_level_metadata_bridge_2eproto, file_level_enum_descriptors_bridge_2eproto,
+    file_level_service_descriptors_bridge_2eproto,
+};
 PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_bridge_2eproto_getter() {
   return &descriptor_table_bridge_2eproto;
 }
+
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
-static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_bridge_2eproto(&descriptor_table_bridge_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_bridge_2eproto(&descriptor_table_bridge_2eproto);
 namespace bridgeserver {
+
 // ===================================================================
 
 class HelloRequest::_Internal {
  public:
 };
 
-HelloRequest::HelloRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor(arena);
+HelloRequest::HelloRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:bridgeserver.HelloRequest)
 }
 HelloRequest::HelloRequest(const HelloRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   HelloRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.name_) {}
-
+      decltype(_impl_.name_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:bridgeserver.HelloRequest)
 }
 
-inline void HelloRequest::SharedCtor(::_pb::Arena* arena) {
+inline void HelloRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.name_) {}
-
+      decltype(_impl_.name_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 HelloRequest::~HelloRequest() {
@@ -248,7 +205,7 @@ HelloRequest::~HelloRequest() {
 }
 
 inline void HelloRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.name_.Destroy();
 }
 
@@ -258,7 +215,7 @@ void HelloRequest::SetCachedSize(int size) const {
 
 void HelloRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:bridgeserver.HelloRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -269,19 +226,18 @@ void HelloRequest::Clear() {
 const char* HelloRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
+    uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "bridgeserver.HelloRequest.name"));
-        } else {
+        } else
           goto handle_unusual;
-        }
         continue;
       default:
         goto handle_unusual;
@@ -306,18 +262,20 @@ failure:
 #undef CHK_
 }
 
-::uint8_t* HelloRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* HelloRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:bridgeserver.HelloRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "bridgeserver.HelloRequest.name");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "bridgeserver.HelloRequest.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -328,18 +286,19 @@ failure:
   return target;
 }
 
-::size_t HelloRequest::ByteSizeLong() const {
+size_t HelloRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:bridgeserver.HelloRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -356,8 +315,8 @@ void HelloRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   auto* const _this = static_cast<HelloRequest*>(&to_msg);
   auto& from = static_cast<const HelloRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:bridgeserver.HelloRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_name().empty()) {
@@ -382,8 +341,10 @@ void HelloRequest::InternalSwap(HelloRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata HelloRequest::GetMetadata() const {
@@ -391,47 +352,50 @@ void HelloRequest::InternalSwap(HelloRequest* other) {
       &descriptor_table_bridge_2eproto_getter, &descriptor_table_bridge_2eproto_once,
       file_level_metadata_bridge_2eproto[0]);
 }
+
 // ===================================================================
 
 class HelloReply::_Internal {
  public:
 };
 
-HelloReply::HelloReply(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor(arena);
+HelloReply::HelloReply(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:bridgeserver.HelloReply)
 }
 HelloReply::HelloReply(const HelloReply& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   HelloReply* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.message_) {}
-
+      decltype(_impl_.message_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.message_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
+    _this->_impl_.message_.Set(from._internal_message(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:bridgeserver.HelloReply)
 }
 
-inline void HelloReply::SharedCtor(::_pb::Arena* arena) {
+inline void HelloReply::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.message_) {}
-
+      decltype(_impl_.message_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.message_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 HelloReply::~HelloReply() {
@@ -444,7 +408,7 @@ HelloReply::~HelloReply() {
 }
 
 inline void HelloReply::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.message_.Destroy();
 }
 
@@ -454,7 +418,7 @@ void HelloReply::SetCachedSize(int size) const {
 
 void HelloReply::Clear() {
 // @@protoc_insertion_point(message_clear_start:bridgeserver.HelloReply)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -465,19 +429,18 @@ void HelloReply::Clear() {
 const char* HelloReply::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
+    uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // string message = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_message();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "bridgeserver.HelloReply.message"));
-        } else {
+        } else
           goto handle_unusual;
-        }
         continue;
       default:
         goto handle_unusual;
@@ -502,18 +465,20 @@ failure:
 #undef CHK_
 }
 
-::uint8_t* HelloReply::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* HelloReply::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:bridgeserver.HelloReply)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string message = 1;
   if (!this->_internal_message().empty()) {
-    const std::string& _s = this->_internal_message();
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE, "bridgeserver.HelloReply.message");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "bridgeserver.HelloReply.message");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_message(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -524,18 +489,19 @@ failure:
   return target;
 }
 
-::size_t HelloReply::ByteSizeLong() const {
+size_t HelloReply::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:bridgeserver.HelloReply)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string message = 1;
   if (!this->_internal_message().empty()) {
-    total_size += 1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-                                    this->_internal_message());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -552,8 +518,8 @@ void HelloReply::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PRO
   auto* const _this = static_cast<HelloReply*>(&to_msg);
   auto& from = static_cast<const HelloReply&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:bridgeserver.HelloReply)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_message().empty()) {
@@ -578,8 +544,10 @@ void HelloReply::InternalSwap(HelloReply* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
-                                       &other->_impl_.message_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.message_, lhs_arena,
+      &other->_impl_.message_, rhs_arena
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata HelloReply::GetMetadata() const {
@@ -587,29 +555,37 @@ void HelloReply::InternalSwap(HelloReply* other) {
       &descriptor_table_bridge_2eproto_getter, &descriptor_table_bridge_2eproto_once,
       file_level_metadata_bridge_2eproto[1]);
 }
+
 // ===================================================================
 
 class StreamRequest::_Internal {
  public:
 };
 
-StreamRequest::StreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor(arena);
+StreamRequest::StreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:bridgeserver.StreamRequest)
 }
 StreamRequest::StreamRequest(const StreamRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
-      from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StreamRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.limit_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.limit_ = from._impl_.limit_;
   // @@protoc_insertion_point(copy_constructor:bridgeserver.StreamRequest)
 }
 
-inline void StreamRequest::SharedCtor(::_pb::Arena* arena) {
+inline void StreamRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.limit_) { 0 }
-
+      decltype(_impl_.limit_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -624,7 +600,7 @@ StreamRequest::~StreamRequest() {
 }
 
 inline void StreamRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
 void StreamRequest::SetCachedSize(int size) const {
@@ -633,7 +609,7 @@ void StreamRequest::SetCachedSize(int size) const {
 
 void StreamRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:bridgeserver.StreamRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -644,17 +620,16 @@ void StreamRequest::Clear() {
 const char* StreamRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
+    uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // int32 limit = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _impl_.limit_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else {
+        } else
           goto handle_unusual;
-        }
         continue;
       default:
         goto handle_unusual;
@@ -679,17 +654,16 @@ failure:
 #undef CHK_
 }
 
-::uint8_t* StreamRequest::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* StreamRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:bridgeserver.StreamRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // int32 limit = 1;
   if (this->_internal_limit() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
-        1, this->_internal_limit(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_limit(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -700,18 +674,17 @@ failure:
   return target;
 }
 
-::size_t StreamRequest::ByteSizeLong() const {
+size_t StreamRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:bridgeserver.StreamRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // int32 limit = 1;
   if (this->_internal_limit() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_limit());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_limit());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -728,8 +701,8 @@ void StreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   auto* const _this = static_cast<StreamRequest*>(&to_msg);
   auto& from = static_cast<const StreamRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:bridgeserver.StreamRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_limit() != 0) {
@@ -752,7 +725,6 @@ bool StreamRequest::IsInitialized() const {
 void StreamRequest::InternalSwap(StreamRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-
   swap(_impl_.limit_, other->_impl_.limit_);
 }
 
@@ -761,29 +733,37 @@ void StreamRequest::InternalSwap(StreamRequest* other) {
       &descriptor_table_bridge_2eproto_getter, &descriptor_table_bridge_2eproto_once,
       file_level_metadata_bridge_2eproto[2]);
 }
+
 // ===================================================================
 
 class StreamReply::_Internal {
  public:
 };
 
-StreamReply::StreamReply(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor(arena);
+StreamReply::StreamReply(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:bridgeserver.StreamReply)
 }
 StreamReply::StreamReply(const StreamReply& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(
-      from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StreamReply* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.number_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.number_ = from._impl_.number_;
   // @@protoc_insertion_point(copy_constructor:bridgeserver.StreamReply)
 }
 
-inline void StreamReply::SharedCtor(::_pb::Arena* arena) {
+inline void StreamReply::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.number_) { 0 }
-
+      decltype(_impl_.number_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -798,7 +778,7 @@ StreamReply::~StreamReply() {
 }
 
 inline void StreamReply::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
 void StreamReply::SetCachedSize(int size) const {
@@ -807,7 +787,7 @@ void StreamReply::SetCachedSize(int size) const {
 
 void StreamReply::Clear() {
 // @@protoc_insertion_point(message_clear_start:bridgeserver.StreamReply)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -818,17 +798,16 @@ void StreamReply::Clear() {
 const char* StreamReply::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
+    uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // int32 number = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _impl_.number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else {
+        } else
           goto handle_unusual;
-        }
         continue;
       default:
         goto handle_unusual;
@@ -853,17 +832,16 @@ failure:
 #undef CHK_
 }
 
-::uint8_t* StreamReply::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* StreamReply::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:bridgeserver.StreamReply)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   // int32 number = 1;
   if (this->_internal_number() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(
-        1, this->_internal_number(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_number(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -874,18 +852,17 @@ failure:
   return target;
 }
 
-::size_t StreamReply::ByteSizeLong() const {
+size_t StreamReply::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:bridgeserver.StreamReply)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // int32 number = 1;
   if (this->_internal_number() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_number());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_number());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -902,8 +879,8 @@ void StreamReply::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PR
   auto* const _this = static_cast<StreamReply*>(&to_msg);
   auto& from = static_cast<const StreamReply&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:bridgeserver.StreamReply)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_number() != 0) {
@@ -926,7 +903,6 @@ bool StreamReply::IsInitialized() const {
 void StreamReply::InternalSwap(StreamReply* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-
   swap(_impl_.number_, other->_impl_.number_);
 }
 
@@ -935,6 +911,7 @@ void StreamReply::InternalSwap(StreamReply* other) {
       &descriptor_table_bridge_2eproto_getter, &descriptor_table_bridge_2eproto_once,
       file_level_metadata_bridge_2eproto[3]);
 }
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace bridgeserver
 PROTOBUF_NAMESPACE_OPEN
@@ -955,5 +932,6 @@ Arena::CreateMaybeMessage< ::bridgeserver::StreamReply >(Arena* arena) {
   return Arena::CreateMessageInternal< ::bridgeserver::StreamReply >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
+
 // @@protoc_insertion_point(global_scope)
-#include "google/protobuf/port_undef.inc"
+#include <google/protobuf/port_undef.inc>
