@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package bridgelink;
+
+option go_package = "BridgeLinkClient/bridgelink"; // replace with your package
+
+service PyTorchService {
+  rpc IsCudaAvailable (CudaAvailableRequest) returns (CudaAvailableResponse) {}
+  rpc GetCudaDeviceCount (CudaDeviceCountRequest) returns (CudaDeviceCountResponse) {}
+}
+
+message CudaAvailableRequest {
+  // You can leave this empty if there is no input needed for this RPC
+}
+
+message CudaAvailableResponse {
+  bool available = 1;  // is CUDA available
+}
+
+message CudaDeviceCountRequest {
+  // You can leave this empty if there is no input needed for this RPC
+}
+
+message CudaDeviceCountResponse {
+  int32 count = 1;  // number of CUDA devices
+}

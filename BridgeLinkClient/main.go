@@ -24,15 +24,28 @@ func main() {
 	}
 	defer conn.Close()
 
-	client := pb.NewBridgeLinkClient(conn)
+	bridgeCoreClient := pb.NewBridgeLinkClient(conn)
+	bridgePyTorchClient := pb.NewPyTorchServiceClient(conn)
 
-	GetBridgeServerVersion(client)
-	GetBridgeServerUpTime(client)
-	stream, err := client.StreamRandomString(context.Background(), &pb.StreamRequest{})
+	GetBridgeServerVersion(bridgeCoreClient)
+	GetBridgeServerUpTime(bridgeCoreClient)
+	stream, err := bridgeCoreClient.StreamRandomString(context.Background(), &pb.StreamRequest{})
 	if err != nil {
 		log.Fatalf("Error on get random string: %v", err)
 	}
+	// Call IsCudaAvailable
+	r1, err := bridgePyTorchClient.IsCudaAvailable(context.Background(), &pb.CudaAvailableRequest{})
+	if err != nil {
+		log.Fatalf("could not check cuda availability: %v", err)
+	}
+	log.Printf("Cuda Available: %v", r1.GetAvailable())
 
+	// Call GetCudaDeviceCount
+	r2, err := bridgePyTorchClient.GetCudaDeviceCount(context.Background(), &pb.CudaDeviceCountRequest{})
+	if err != nil {
+		log.Fatalf("could not get cuda device count: %v", err)
+	}
+	log.Printf("Cuda Device Count: %v", r2.GetCount())
 	waitc := make(chan struct{})
 	go func() {
 		defer close(waitc)

@@ -5,6 +5,8 @@
 #include <grpcpp/grpcpp.h>
 #include "pb/bridgelink.grpc.pb.h" // Generated from your protos
 
+#include "bridge_pytorch.h" // pytorch bridge
+
 using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
@@ -18,12 +20,14 @@ using bridgelink::UptimeResponse;
 using bridgelink::StreamRequest;
 using bridgelink::StreamResponse;
 
+const std::string VERSION = "1.0.0";
+
 auto start_time = std::chrono::system_clock::now();
 
 class BridgeLinkServiceImpl final : public BridgeLink::Service {
     Status GetServiceLinkVersionNumber(ServerContext* context, const ServiceLinkVersionRequest* request, 
                                        ServiceLinkVersionResponse* reply) override {
-        reply->set_version("1.0.0"); // Hardcoded version number
+        reply->set_version(VERSION); // Hardcoded version number
         return Status::OK;
     }
 
@@ -56,13 +60,19 @@ class BridgeLinkServiceImpl final : public BridgeLink::Service {
     }
 };
 
+
+
 void RunServer() {
     std::string server_address("0.0.0.0:50051");
-    BridgeLinkServiceImpl service;
+    BridgeLinkServiceImpl coreservice;
 
     ServerBuilder builder;
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
-    builder.RegisterService(&service);
+    builder.RegisterService(&coreservice);
+
+    // Register other services
+    PyTorchServiceImpl pytorch_service;
+    builder.RegisterService(&pytorch_service); // register this service as well
 
     std::unique_ptr<Server> server(builder.BuildAndStart());
     std::cout << "Server listening on " << server_address << std::endl;

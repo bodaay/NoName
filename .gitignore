@@ -5,6 +5,7 @@ libgrpc/src/*
 libgrpc/INSTALL/*
 
 BridgeLinkServer/build/*
+BridgeLinkServer/out/*
 
 loaders/exllama/repo/*
 loaders/exllama/build/*

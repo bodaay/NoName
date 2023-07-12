@@ -11,7 +11,9 @@ PROTO_FILE_DIR="./"
 OUTPUT_DIR_CPP="../BridgeLinkServer/pb"
 OUTPUT_DIR_GO="../BridgeLinkClient/pb" # specify your output path for Go files
 
-
+# Clear old ones first
+rm -rf $OUTPUT_DIR_CPP/*
+rm -rf $OUTPUT_DIR_GO/*
 $PROTOC_PATH --proto_path=$PROTO_FILE_DIR --cpp_out=$OUTPUT_DIR_CPP --grpc_out=$OUTPUT_DIR_CPP --plugin=protoc-gen-grpc=$GRPC_CPP_PLUGIN_PATH *.proto 
 
 
