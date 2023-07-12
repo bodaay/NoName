@@ -1,5 +1,5 @@
 #include <grpcpp/grpcpp.h>
-#include "pb/brdigelink_pytorch.grpc.pb.h" // Generated from your protos
+#include "pb/bridgelink_pytorch.grpc.pb.h" // Generated from your protos
 #include "pytorch/pytorch.h"
 using bridgelink::PyTorchService;
 //  CUDA Service Implemenation

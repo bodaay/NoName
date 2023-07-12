@@ -133,5 +133,5 @@ var PyTorchService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "brdigelink_pytorch.proto",
+	Metadata: "bridgelink_pytorch.proto",
 }

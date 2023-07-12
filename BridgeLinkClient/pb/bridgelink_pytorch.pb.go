@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.26.0
 // 	protoc        v4.23.1
-// source: brdigelink_pytorch.proto
+// source: bridgelink_pytorch.proto
 
 package bridgelink
 
@@ -29,7 +29,7 @@ type CudaAvailableRequest struct {
 func (x *CudaAvailableRequest) Reset() {
 	*x = CudaAvailableRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_brdigelink_pytorch_proto_msgTypes[0]
+		mi := &file_bridgelink_pytorch_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -42,7 +42,7 @@ func (x *CudaAvailableRequest) String() string {
 func (*CudaAvailableRequest) ProtoMessage() {}
 
 func (x *CudaAvailableRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_brdigelink_pytorch_proto_msgTypes[0]
+	mi := &file_bridgelink_pytorch_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *CudaAvailableRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CudaAvailableRequest.ProtoReflect.Descriptor instead.
 func (*CudaAvailableRequest) Descriptor() ([]byte, []int) {
-	return file_brdigelink_pytorch_proto_rawDescGZIP(), []int{0}
+	return file_bridgelink_pytorch_proto_rawDescGZIP(), []int{0}
 }
 
 type CudaAvailableResponse struct {
@@ -69,7 +69,7 @@ type CudaAvailableResponse struct {
 func (x *CudaAvailableResponse) Reset() {
 	*x = CudaAvailableResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_brdigelink_pytorch_proto_msgTypes[1]
+		mi := &file_bridgelink_pytorch_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -82,7 +82,7 @@ func (x *CudaAvailableResponse) String() string {
 func (*CudaAvailableResponse) ProtoMessage() {}
 
 func (x *CudaAvailableResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_brdigelink_pytorch_proto_msgTypes[1]
+	mi := &file_bridgelink_pytorch_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -95,7 +95,7 @@ func (x *CudaAvailableResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CudaAvailableResponse.ProtoReflect.Descriptor instead.
 func (*CudaAvailableResponse) Descriptor() ([]byte, []int) {
-	return file_brdigelink_pytorch_proto_rawDescGZIP(), []int{1}
+	return file_bridgelink_pytorch_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CudaAvailableResponse) GetAvailable() bool {
@@ -114,7 +114,7 @@ type CudaDeviceCountRequest struct {
 func (x *CudaDeviceCountRequest) Reset() {
 	*x = CudaDeviceCountRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_brdigelink_pytorch_proto_msgTypes[2]
+		mi := &file_bridgelink_pytorch_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -127,7 +127,7 @@ func (x *CudaDeviceCountRequest) String() string {
 func (*CudaDeviceCountRequest) ProtoMessage() {}
 
 func (x *CudaDeviceCountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_brdigelink_pytorch_proto_msgTypes[2]
+	mi := &file_bridgelink_pytorch_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -140,7 +140,7 @@ func (x *CudaDeviceCountRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CudaDeviceCountRequest.ProtoReflect.Descriptor instead.
 func (*CudaDeviceCountRequest) Descriptor() ([]byte, []int) {
-	return file_brdigelink_pytorch_proto_rawDescGZIP(), []int{2}
+	return file_bridgelink_pytorch_proto_rawDescGZIP(), []int{2}
 }
 
 type CudaDeviceCountResponse struct {
@@ -154,7 +154,7 @@ type CudaDeviceCountResponse struct {
 func (x *CudaDeviceCountResponse) Reset() {
 	*x = CudaDeviceCountResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_brdigelink_pytorch_proto_msgTypes[3]
+		mi := &file_bridgelink_pytorch_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -167,7 +167,7 @@ func (x *CudaDeviceCountResponse) String() string {
 func (*CudaDeviceCountResponse) ProtoMessage() {}
 
 func (x *CudaDeviceCountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_brdigelink_pytorch_proto_msgTypes[3]
+	mi := &file_bridgelink_pytorch_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -180,7 +180,7 @@ func (x *CudaDeviceCountResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CudaDeviceCountResponse.ProtoReflect.Descriptor instead.
 func (*CudaDeviceCountResponse) Descriptor() ([]byte, []int) {
-	return file_brdigelink_pytorch_proto_rawDescGZIP(), []int{3}
+	return file_bridgelink_pytorch_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CudaDeviceCountResponse) GetCount() int32 {
@@ -190,10 +190,10 @@ func (x *CudaDeviceCountResponse) GetCount() int32 {
 	return 0
 }
 
-var File_brdigelink_pytorch_proto protoreflect.FileDescriptor
+var File_bridgelink_pytorch_proto protoreflect.FileDescriptor
 
-var file_brdigelink_pytorch_proto_rawDesc = []byte{
-	0x0a, 0x18, 0x62, 0x72, 0x64, 0x69, 0x67, 0x65, 0x6c, 0x69, 0x6e, 0x6b, 0x5f, 0x70, 0x79, 0x74,
+var file_bridgelink_pytorch_proto_rawDesc = []byte{
+	0x0a, 0x18, 0x62, 0x72, 0x69, 0x64, 0x67, 0x65, 0x6c, 0x69, 0x6e, 0x6b, 0x5f, 0x70, 0x79, 0x74,
 	0x6f, 0x72, 0x63, 0x68, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0a, 0x62, 0x72, 0x69, 0x64,
 	0x67, 0x65, 0x6c, 0x69, 0x6e, 0x6b, 0x22, 0x16, 0x0a, 0x14, 0x43, 0x75, 0x64, 0x61, 0x41, 0x76,
 	0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x35,
@@ -224,25 +224,25 @@ var file_brdigelink_pytorch_proto_rawDesc = []byte{
 }
 
 var (
-	file_brdigelink_pytorch_proto_rawDescOnce sync.Once
-	file_brdigelink_pytorch_proto_rawDescData = file_brdigelink_pytorch_proto_rawDesc
+	file_bridgelink_pytorch_proto_rawDescOnce sync.Once
+	file_bridgelink_pytorch_proto_rawDescData = file_bridgelink_pytorch_proto_rawDesc
 )
 
-func file_brdigelink_pytorch_proto_rawDescGZIP() []byte {
-	file_brdigelink_pytorch_proto_rawDescOnce.Do(func() {
-		file_brdigelink_pytorch_proto_rawDescData = protoimpl.X.CompressGZIP(file_brdigelink_pytorch_proto_rawDescData)
+func file_bridgelink_pytorch_proto_rawDescGZIP() []byte {
+	file_bridgelink_pytorch_proto_rawDescOnce.Do(func() {
+		file_bridgelink_pytorch_proto_rawDescData = protoimpl.X.CompressGZIP(file_bridgelink_pytorch_proto_rawDescData)
 	})
-	return file_brdigelink_pytorch_proto_rawDescData
+	return file_bridgelink_pytorch_proto_rawDescData
 }
 
-var file_brdigelink_pytorch_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_brdigelink_pytorch_proto_goTypes = []interface{}{
+var file_bridgelink_pytorch_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_bridgelink_pytorch_proto_goTypes = []interface{}{
 	(*CudaAvailableRequest)(nil),    // 0: bridgelink.CudaAvailableRequest
 	(*CudaAvailableResponse)(nil),   // 1: bridgelink.CudaAvailableResponse
 	(*CudaDeviceCountRequest)(nil),  // 2: bridgelink.CudaDeviceCountRequest
 	(*CudaDeviceCountResponse)(nil), // 3: bridgelink.CudaDeviceCountResponse
 }
-var file_brdigelink_pytorch_proto_depIdxs = []int32{
+var file_bridgelink_pytorch_proto_depIdxs = []int32{
 	0, // 0: bridgelink.PyTorchService.IsCudaAvailable:input_type -> bridgelink.CudaAvailableRequest
 	2, // 1: bridgelink.PyTorchService.GetCudaDeviceCount:input_type -> bridgelink.CudaDeviceCountRequest
 	1, // 2: bridgelink.PyTorchService.IsCudaAvailable:output_type -> bridgelink.CudaAvailableResponse
@@ -254,13 +254,13 @@ var file_brdigelink_pytorch_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_brdigelink_pytorch_proto_init() }
-func file_brdigelink_pytorch_proto_init() {
-	if File_brdigelink_pytorch_proto != nil {
+func init() { file_bridgelink_pytorch_proto_init() }
+func file_bridgelink_pytorch_proto_init() {
+	if File_bridgelink_pytorch_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_brdigelink_pytorch_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_bridgelink_pytorch_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CudaAvailableRequest); i {
 			case 0:
 				return &v.state
@@ -272,7 +272,7 @@ func file_brdigelink_pytorch_proto_init() {
 				return nil
 			}
 		}
-		file_brdigelink_pytorch_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_bridgelink_pytorch_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CudaAvailableResponse); i {
 			case 0:
 				return &v.state
@@ -284,7 +284,7 @@ func file_brdigelink_pytorch_proto_init() {
 				return nil
 			}
 		}
-		file_brdigelink_pytorch_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_bridgelink_pytorch_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CudaDeviceCountRequest); i {
 			case 0:
 				return &v.state
@@ -296,7 +296,7 @@ func file_brdigelink_pytorch_proto_init() {
 				return nil
 			}
 		}
-		file_brdigelink_pytorch_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_bridgelink_pytorch_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CudaDeviceCountResponse); i {
 			case 0:
 				return &v.state
@@ -313,18 +313,18 @@ func file_brdigelink_pytorch_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_brdigelink_pytorch_proto_rawDesc,
+			RawDescriptor: file_bridgelink_pytorch_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_brdigelink_pytorch_proto_goTypes,
-		DependencyIndexes: file_brdigelink_pytorch_proto_depIdxs,
-		MessageInfos:      file_brdigelink_pytorch_proto_msgTypes,
+		GoTypes:           file_bridgelink_pytorch_proto_goTypes,
+		DependencyIndexes: file_bridgelink_pytorch_proto_depIdxs,
+		MessageInfos:      file_bridgelink_pytorch_proto_msgTypes,
 	}.Build()
-	File_brdigelink_pytorch_proto = out.File
-	file_brdigelink_pytorch_proto_rawDesc = nil
-	file_brdigelink_pytorch_proto_goTypes = nil
-	file_brdigelink_pytorch_proto_depIdxs = nil
+	File_bridgelink_pytorch_proto = out.File
+	file_bridgelink_pytorch_proto_rawDesc = nil
+	file_bridgelink_pytorch_proto_goTypes = nil
+	file_bridgelink_pytorch_proto_depIdxs = nil
 }
