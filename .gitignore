@@ -1,6 +1,11 @@
 CudaSetup/temp/
 libtorch/src/*
 
+libgrpc/src/*
+libgrpc/INSTALL/*
+
+BridgeLinkServer/build/*
+
 loaders/exllama/repo/*
 loaders/exllama/build/*
 

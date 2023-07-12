@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package bridgeserver;
+
+option go_package = "bodaay/bridgeserver"; // replace with your package
+
+
+service BridgeServerService {
+  rpc SayHello (HelloRequest) returns (HelloReply) {};
+
+  rpc StreamNumbers (StreamRequest) returns (stream StreamReply) {};
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message StreamRequest {
+  int32 limit = 1;
+}
+
+message StreamReply {
+  int32 number = 1;
+}
