@@ -24,39 +24,73 @@ func main() {
 	}
 	defer conn.Close()
 
-	client := pb.NewBridgeServerServiceClient(conn)
+	client := pb.NewBridgeLinkClient(conn)
 
-	SayHello(client)
-	StreamNumbers(client)
+	GetBridgeServerVersion(client)
+	GetBridgeServerUpTime(client)
+	stream, err := client.StreamRandomString(context.Background(), &pb.StreamRequest{})
+	if err != nil {
+		log.Fatalf("Error on get random string: %v", err)
+	}
+
+	waitc := make(chan struct{})
+	go func() {
+		defer close(waitc)
+		for {
+			res, err := stream.Recv()
+			if err == io.EOF {
+				return
+			}
+			if err != nil {
+				log.Fatalf("Failed to receive a note : %v", err)
+			}
+			fmt.Printf("Got random string %s\n", res.GetValue())
+		}
+	}()
+
+	// Check if the stream is working by waiting for a bit.
+	time.Sleep(1 * time.Minute)
+	stream.CloseSend()
+	<-waitc
 }
 
-func SayHello(client pb.BridgeServerServiceClient) {
+func GetBridgeServerVersion(client pb.BridgeLinkClient) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	response, err := client.SayHello(ctx, &pb.HelloRequest{Name: "Khalefa"})
+	response, err := client.GetServiceLinkVersionNumber(ctx, &pb.ServiceLinkVersionRequest{})
 	if err != nil {
-		log.Fatalf("SayHello RPC failed: %v", err)
+		log.Fatalf("ServiceLinkVersionRequest RPC failed: %v", err)
 	}
-	fmt.Printf("Server replied: %s\n", response.Message)
+	fmt.Printf("Server replied: %s\n", response.Version)
 }
-
-func StreamNumbers(client pb.BridgeServerServiceClient) {
+func GetBridgeServerUpTime(client pb.BridgeLinkClient) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	stream, err := client.StreamNumbers(ctx, &pb.StreamRequest{Limit: 3})
+	response, err := client.GetUptime(ctx, &pb.UptimeRequest{})
 	if err != nil {
-		log.Fatalf("StreamNumbers RPC failed: %v", err)
+		log.Fatalf("UptimeRequest RPC failed: %v", err)
 	}
-	for {
-		response, err := stream.Recv()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatalf("Failed to receive: %v", err)
-		}
-		fmt.Printf("Received: %v\n", response.Number)
-	}
+	fmt.Printf("Server replied: %s\n", response.Uptime)
 }
+
+// func GetBridgeServerUpTime(client pb.BridgeLinkClient) {
+// 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+// 	defer cancel()
+
+// 	stream, err := client.GetUptime(ctx, &pb.UptimeRequest{})
+// 	if err != nil {
+// 		log.Fatalf("StreamNumbers RPC failed: %v", err)
+// 	}
+// 	for {
+// 		response, err := stream.Recv()
+// 		if err == io.EOF {
+// 			break
+// 		}
+// 		if err != nil {
+// 			log.Fatalf("Failed to receive: %v", err)
+// 		}
+// 		fmt.Printf("Received: %v\n", response.Number)
+// 	}
+// }

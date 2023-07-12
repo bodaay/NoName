@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package bridgelink;
+
+option go_package = "BridgeLinkClient/bridgelink"; // replace with your package
+
+
+service BridgeLink {
+  rpc GetServiceLinkVersionNumber (ServiceLinkVersionRequest) returns (ServiceLinkVersionResponse) {}
+  rpc GetUptime (UptimeRequest) returns (UptimeResponse) {}
+  rpc StreamRandomString (StreamRequest) returns (stream StreamResponse) {}
+}
+
+message ServiceLinkVersionRequest {
+  // You can leave this empty if there is no input needed for this RPC
+}
+
+message ServiceLinkVersionResponse {
+  string version = 1;  // version number of the service
+}
+
+message UptimeRequest {
+  // You can leave this empty if there is no input needed for this RPC
+}
+
+message UptimeResponse {
+  string uptime = 1;  // uptime of the service
+}
+
+message StreamRequest {
+  // You can leave this empty if there is no input needed for this RPC
+}
+
+message StreamResponse {
+  string value = 1;  // the random string
+}

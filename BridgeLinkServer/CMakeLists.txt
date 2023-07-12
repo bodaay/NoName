@@ -44,5 +44,7 @@ message(STATUS "Protobuf compiler: ${Protobuf_PROTOC_EXECUTABLE}")
 # Set the directory for the output executable files
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)
 
-add_executable(bridgeLinkServer bridge.cpp pb/bridge.pb.cc pb/bridge.grpc.pb.cc)
+file(GLOB PB_SRC "pb/*.cc")
+
+add_executable(bridgeLinkServer bridge.cpp ${PB_SRC})
 target_link_libraries(bridgeLinkServer ${_GRPC_GRPCPP} ${_REFLECTION} ${_PROTOBUF_LIBPROTOBUF} OpenSSL::SSL)

@@ -4,11 +4,12 @@
 CUDAVERSON="11.8"
 # rm -rf build
 mkdir -p build
-cd build
+pushd build
 GRPC_FOLDER=${PWD}/../../libgrpc/INSTALL
 # echo 
 cmake -DCMAKE_PREFIX_PATH=$GRPC_FOLDER ..
 cmake --build . --config Release 
-
+popd
+mv bin/bridgeLinkServer bin/bridgeLinkServer_linux_x86_64
 #cleanup
 # cd .. && rm -rf build
