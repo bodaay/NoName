@@ -8,7 +8,7 @@ set(INSTALL_DESTINATION_BINARIES "${CMAKE_CURRENT_SOURCE_DIR}/out")
 set(INSTALL_DESTINATION_LIBRARIES "${INSTALL_DESTINATION_BINARIES}/lib")
 
 
-########### CORE GRPC ###########
+################################################## CORE GRPC ########################################################
 
 set(CMAKE_CXX_STANDARD 17)
 set(OPENSSL_USE_STATIC_LIBS TRUE)
@@ -66,7 +66,7 @@ target_link_libraries(
     bridgetorch
 )
 
-########### BRIDGE PYTORCH ###########
+################################################## BRIDGE PYTORCH ########################################################
 set(CMAKE_PREFIX_PATH "${LIBTORCH_FOLDER}")
 find_package(Torch REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")

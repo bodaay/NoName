@@ -13,11 +13,18 @@ bool cuda_is_available() {
 }
 
 MemoryStatus getGPUMemoryStatus(int deviceId) {
-    cudaSetDevice(deviceId);
+    cudaError_t cuda_status;
+    cuda_status=cudaSetDevice(deviceId);
+    if (cudaSuccess != cuda_status) {
+        printf("Error: cudaSetDevice fails, %s \n", cudaGetErrorString(cuda_status));
+        
+        // Return all zeros on error
+        return MemoryStatus{0.0, 0.0, 0.0};
+    }
 
     size_t free_byte;
     size_t total_byte;
-    cudaError_t cuda_status = cudaMemGetInfo(&free_byte, &total_byte);
+    cuda_status = cudaMemGetInfo(&free_byte, &total_byte);
 
     if (cudaSuccess != cuda_status) {
         printf("Error: cudaMemGetInfo fails, %s \n", cudaGetErrorString(cuda_status));

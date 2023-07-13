@@ -47,7 +47,7 @@ func main() {
 	}
 	log.Printf("Cuda Device Count: %v", r2.GetCount())
 	if r2.GetCount() > 0 {
-		r, err := bridgePyTorchClient.GetGPUMemoryInfo(context.Background(), &pb.CudaMemInfoRequest{CudaDeviceID: 0})
+		r, err := bridgePyTorchClient.GetGPUMemoryInfo(context.Background(), &pb.CudaMemInfoRequest{CudaDeviceID: 1})
 		if err != nil {
 			log.Fatalf("could not get memory info: %v", err)
 		}
@@ -85,7 +85,7 @@ func GetBridgeServerVersion(client pb.BridgeLinkClient) {
 	if err != nil {
 		log.Fatalf("ServiceLinkVersionRequest RPC failed: %v", err)
 	}
-	fmt.Printf("Server replied: %s\n", response.Version)
+	fmt.Printf("Server VERSION: %s\n", response.Version)
 }
 func GetBridgeServerUpTime(client pb.BridgeLinkClient) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
@@ -95,7 +95,7 @@ func GetBridgeServerUpTime(client pb.BridgeLinkClient) {
 	if err != nil {
 		log.Fatalf("UptimeRequest RPC failed: %v", err)
 	}
-	fmt.Printf("Server replied: %s\n", response.Uptime)
+	fmt.Printf("Server UPTIME in seconds: %s\n", response.Uptime)
 }
 
 // func GetBridgeServerUpTime(client pb.BridgeLinkClient) {

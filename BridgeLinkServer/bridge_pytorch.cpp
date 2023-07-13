@@ -23,8 +23,8 @@ Status PyTorchServiceImpl::GetGPUMemoryInfo(
     CudaMemInfoResponse* reply) {
     
     int deviceId = request->cudadeviceid();
-    MemoryStatus status = getGPUMemoryStatus(deviceId);
-
+    MemoryStatus status = getGPUMemoryStatus(deviceId); //TODO: Handle this in a better way, handle the errors properly and return the actual cuda_status error
+    if (status.total==0) return Status(grpc::NOT_FOUND, "Invalid Device Cuda Device ID");
     reply->set_totalmemorymb(status.total);
     reply->set_totalallocatedmb(status.allocated);
     reply->set_totalavailablemb(status.available);
