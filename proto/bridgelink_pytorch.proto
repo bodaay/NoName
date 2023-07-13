@@ -7,6 +7,7 @@ option go_package = "BridgeLinkClient/bridgelink"; // replace with your package
 service PyTorchService {
   rpc IsCudaAvailable (CudaAvailableRequest) returns (CudaAvailableResponse) {}
   rpc GetCudaDeviceCount (CudaDeviceCountRequest) returns (CudaDeviceCountResponse) {}
+  rpc GetGPUMemoryInfo (CudaMemInfoRequest) returns (CudaMemInfoResponse) {}
 }
 
 message CudaAvailableRequest {
@@ -23,4 +24,14 @@ message CudaDeviceCountRequest {
 
 message CudaDeviceCountResponse {
   int32 count = 1;  // number of CUDA devices
+}
+
+message CudaMemInfoRequest {
+  int32 cudaDeviceID = 1;
+}
+
+message CudaMemInfoResponse {
+  float totalMemoryMB = 1;
+  float totalAllocatedMB = 2;
+  float totalAvailableMB = 3;
 }

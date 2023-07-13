@@ -24,6 +24,7 @@ namespace bridgelink {
 static const char* PyTorchService_method_names[] = {
   "/bridgelink.PyTorchService/IsCudaAvailable",
   "/bridgelink.PyTorchService/GetCudaDeviceCount",
+  "/bridgelink.PyTorchService/GetGPUMemoryInfo",
 };
 
 std::unique_ptr< PyTorchService::Stub> PyTorchService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,6 +36,7 @@ std::unique_ptr< PyTorchService::Stub> PyTorchService::NewStub(const std::shared
 PyTorchService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_IsCudaAvailable_(PyTorchService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetCudaDeviceCount_(PyTorchService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetGPUMemoryInfo_(PyTorchService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status PyTorchService::Stub::IsCudaAvailable(::grpc::ClientContext* context, const ::bridgelink::CudaAvailableRequest& request, ::bridgelink::CudaAvailableResponse* response) {
@@ -83,6 +85,29 @@ void PyTorchService::Stub::async::GetCudaDeviceCount(::grpc::ClientContext* cont
   return result;
 }
 
+::grpc::Status PyTorchService::Stub::GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::bridgelink::CudaMemInfoResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetGPUMemoryInfo_, context, request, response);
+}
+
+void PyTorchService::Stub::async::GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetGPUMemoryInfo_, context, request, response, std::move(f));
+}
+
+void PyTorchService::Stub::async::GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetGPUMemoryInfo_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>* PyTorchService::Stub::PrepareAsyncGetGPUMemoryInfoRaw(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::bridgelink::CudaMemInfoResponse, ::bridgelink::CudaMemInfoRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetGPUMemoryInfo_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>* PyTorchService::Stub::AsyncGetGPUMemoryInfoRaw(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetGPUMemoryInfoRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 PyTorchService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       PyTorchService_method_names[0],
@@ -104,6 +129,16 @@ PyTorchService::Service::Service() {
              ::bridgelink::CudaDeviceCountResponse* resp) {
                return service->GetCudaDeviceCount(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      PyTorchService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< PyTorchService::Service, ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](PyTorchService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::bridgelink::CudaMemInfoRequest* req,
+             ::bridgelink::CudaMemInfoResponse* resp) {
+               return service->GetGPUMemoryInfo(ctx, req, resp);
+             }, this)));
 }
 
 PyTorchService::Service::~Service() {
@@ -117,6 +152,13 @@ PyTorchService::Service::~Service() {
 }
 
 ::grpc::Status PyTorchService::Service::GetCudaDeviceCount(::grpc::ServerContext* context, const ::bridgelink::CudaDeviceCountRequest* request, ::bridgelink::CudaDeviceCountResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status PyTorchService::Service::GetGPUMemoryInfo(::grpc::ServerContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response) {
   (void) context;
   (void) request;
   (void) response;

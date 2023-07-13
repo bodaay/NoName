@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 type PyTorchServiceClient interface {
 	IsCudaAvailable(ctx context.Context, in *CudaAvailableRequest, opts ...grpc.CallOption) (*CudaAvailableResponse, error)
 	GetCudaDeviceCount(ctx context.Context, in *CudaDeviceCountRequest, opts ...grpc.CallOption) (*CudaDeviceCountResponse, error)
+	GetGPUMemoryInfo(ctx context.Context, in *CudaMemInfoRequest, opts ...grpc.CallOption) (*CudaMemInfoResponse, error)
 }
 
 type pyTorchServiceClient struct {
@@ -48,12 +49,22 @@ func (c *pyTorchServiceClient) GetCudaDeviceCount(ctx context.Context, in *CudaD
 	return out, nil
 }
 
+func (c *pyTorchServiceClient) GetGPUMemoryInfo(ctx context.Context, in *CudaMemInfoRequest, opts ...grpc.CallOption) (*CudaMemInfoResponse, error) {
+	out := new(CudaMemInfoResponse)
+	err := c.cc.Invoke(ctx, "/bridgelink.PyTorchService/GetGPUMemoryInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PyTorchServiceServer is the server API for PyTorchService service.
 // All implementations must embed UnimplementedPyTorchServiceServer
 // for forward compatibility
 type PyTorchServiceServer interface {
 	IsCudaAvailable(context.Context, *CudaAvailableRequest) (*CudaAvailableResponse, error)
 	GetCudaDeviceCount(context.Context, *CudaDeviceCountRequest) (*CudaDeviceCountResponse, error)
+	GetGPUMemoryInfo(context.Context, *CudaMemInfoRequest) (*CudaMemInfoResponse, error)
 	mustEmbedUnimplementedPyTorchServiceServer()
 }
 
@@ -66,6 +77,9 @@ func (UnimplementedPyTorchServiceServer) IsCudaAvailable(context.Context, *CudaA
 }
 func (UnimplementedPyTorchServiceServer) GetCudaDeviceCount(context.Context, *CudaDeviceCountRequest) (*CudaDeviceCountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCudaDeviceCount not implemented")
+}
+func (UnimplementedPyTorchServiceServer) GetGPUMemoryInfo(context.Context, *CudaMemInfoRequest) (*CudaMemInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGPUMemoryInfo not implemented")
 }
 func (UnimplementedPyTorchServiceServer) mustEmbedUnimplementedPyTorchServiceServer() {}
 
@@ -116,6 +130,24 @@ func _PyTorchService_GetCudaDeviceCount_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PyTorchService_GetGPUMemoryInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CudaMemInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PyTorchServiceServer).GetGPUMemoryInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bridgelink.PyTorchService/GetGPUMemoryInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PyTorchServiceServer).GetGPUMemoryInfo(ctx, req.(*CudaMemInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PyTorchService_ServiceDesc is the grpc.ServiceDesc for PyTorchService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -130,6 +162,10 @@ var PyTorchService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCudaDeviceCount",
 			Handler:    _PyTorchService_GetCudaDeviceCount_Handler,
+		},
+		{
+			MethodName: "GetGPUMemoryInfo",
+			Handler:    _PyTorchService_GetGPUMemoryInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -64,6 +64,12 @@ extern CudaDeviceCountRequestDefaultTypeInternal _CudaDeviceCountRequest_default
 class CudaDeviceCountResponse;
 struct CudaDeviceCountResponseDefaultTypeInternal;
 extern CudaDeviceCountResponseDefaultTypeInternal _CudaDeviceCountResponse_default_instance_;
+class CudaMemInfoRequest;
+struct CudaMemInfoRequestDefaultTypeInternal;
+extern CudaMemInfoRequestDefaultTypeInternal _CudaMemInfoRequest_default_instance_;
+class CudaMemInfoResponse;
+struct CudaMemInfoResponseDefaultTypeInternal;
+extern CudaMemInfoResponseDefaultTypeInternal _CudaMemInfoResponse_default_instance_;
 }  // namespace bridgelink
 PROTOBUF_NAMESPACE_OPEN
 template <>
@@ -74,6 +80,10 @@ template <>
 ::bridgelink::CudaDeviceCountRequest* Arena::CreateMaybeMessage<::bridgelink::CudaDeviceCountRequest>(Arena*);
 template <>
 ::bridgelink::CudaDeviceCountResponse* Arena::CreateMaybeMessage<::bridgelink::CudaDeviceCountResponse>(Arena*);
+template <>
+::bridgelink::CudaMemInfoRequest* Arena::CreateMaybeMessage<::bridgelink::CudaMemInfoRequest>(Arena*);
+template <>
+::bridgelink::CudaMemInfoResponse* Arena::CreateMaybeMessage<::bridgelink::CudaMemInfoResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
 namespace bridgelink {
@@ -639,6 +649,340 @@ class CudaDeviceCountResponse final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_bridgelink_5fpytorch_2eproto;
+};// -------------------------------------------------------------------
+
+class CudaMemInfoRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:bridgelink.CudaMemInfoRequest) */ {
+ public:
+  inline CudaMemInfoRequest() : CudaMemInfoRequest(nullptr) {}
+  ~CudaMemInfoRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR CudaMemInfoRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CudaMemInfoRequest(const CudaMemInfoRequest& from);
+  CudaMemInfoRequest(CudaMemInfoRequest&& from) noexcept
+    : CudaMemInfoRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline CudaMemInfoRequest& operator=(const CudaMemInfoRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CudaMemInfoRequest& operator=(CudaMemInfoRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CudaMemInfoRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CudaMemInfoRequest* internal_default_instance() {
+    return reinterpret_cast<const CudaMemInfoRequest*>(
+               &_CudaMemInfoRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(CudaMemInfoRequest& a, CudaMemInfoRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CudaMemInfoRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CudaMemInfoRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CudaMemInfoRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CudaMemInfoRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CudaMemInfoRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CudaMemInfoRequest& from) {
+    CudaMemInfoRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CudaMemInfoRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "bridgelink.CudaMemInfoRequest";
+  }
+  protected:
+  explicit CudaMemInfoRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCudaDeviceIDFieldNumber = 1,
+  };
+  // int32 cudaDeviceID = 1;
+  void clear_cudadeviceid() ;
+  ::int32_t cudadeviceid() const;
+  void set_cudadeviceid(::int32_t value);
+
+  private:
+  ::int32_t _internal_cudadeviceid() const;
+  void _internal_set_cudadeviceid(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:bridgelink.CudaMemInfoRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::int32_t cudadeviceid_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_bridgelink_5fpytorch_2eproto;
+};// -------------------------------------------------------------------
+
+class CudaMemInfoResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:bridgelink.CudaMemInfoResponse) */ {
+ public:
+  inline CudaMemInfoResponse() : CudaMemInfoResponse(nullptr) {}
+  ~CudaMemInfoResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR CudaMemInfoResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CudaMemInfoResponse(const CudaMemInfoResponse& from);
+  CudaMemInfoResponse(CudaMemInfoResponse&& from) noexcept
+    : CudaMemInfoResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline CudaMemInfoResponse& operator=(const CudaMemInfoResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CudaMemInfoResponse& operator=(CudaMemInfoResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CudaMemInfoResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CudaMemInfoResponse* internal_default_instance() {
+    return reinterpret_cast<const CudaMemInfoResponse*>(
+               &_CudaMemInfoResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(CudaMemInfoResponse& a, CudaMemInfoResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CudaMemInfoResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CudaMemInfoResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CudaMemInfoResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CudaMemInfoResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CudaMemInfoResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CudaMemInfoResponse& from) {
+    CudaMemInfoResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CudaMemInfoResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "bridgelink.CudaMemInfoResponse";
+  }
+  protected:
+  explicit CudaMemInfoResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTotalMemoryMBFieldNumber = 1,
+    kTotalAllocatedMBFieldNumber = 2,
+    kTotalAvailableMBFieldNumber = 3,
+  };
+  // float totalMemoryMB = 1;
+  void clear_totalmemorymb() ;
+  float totalmemorymb() const;
+  void set_totalmemorymb(float value);
+
+  private:
+  float _internal_totalmemorymb() const;
+  void _internal_set_totalmemorymb(float value);
+
+  public:
+  // float totalAllocatedMB = 2;
+  void clear_totalallocatedmb() ;
+  float totalallocatedmb() const;
+  void set_totalallocatedmb(float value);
+
+  private:
+  float _internal_totalallocatedmb() const;
+  void _internal_set_totalallocatedmb(float value);
+
+  public:
+  // float totalAvailableMB = 3;
+  void clear_totalavailablemb() ;
+  float totalavailablemb() const;
+  void set_totalavailablemb(float value);
+
+  private:
+  float _internal_totalavailablemb() const;
+  void _internal_set_totalavailablemb(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:bridgelink.CudaMemInfoResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    float totalmemorymb_;
+    float totalallocatedmb_;
+    float totalavailablemb_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_bridgelink_5fpytorch_2eproto;
 };
 
 // ===================================================================
@@ -707,6 +1051,94 @@ inline ::int32_t CudaDeviceCountResponse::_internal_count() const {
 inline void CudaDeviceCountResponse::_internal_set_count(::int32_t value) {
   ;
   _impl_.count_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// CudaMemInfoRequest
+
+// int32 cudaDeviceID = 1;
+inline void CudaMemInfoRequest::clear_cudadeviceid() {
+  _impl_.cudadeviceid_ = 0;
+}
+inline ::int32_t CudaMemInfoRequest::cudadeviceid() const {
+  // @@protoc_insertion_point(field_get:bridgelink.CudaMemInfoRequest.cudaDeviceID)
+  return _internal_cudadeviceid();
+}
+inline void CudaMemInfoRequest::set_cudadeviceid(::int32_t value) {
+  _internal_set_cudadeviceid(value);
+  // @@protoc_insertion_point(field_set:bridgelink.CudaMemInfoRequest.cudaDeviceID)
+}
+inline ::int32_t CudaMemInfoRequest::_internal_cudadeviceid() const {
+  return _impl_.cudadeviceid_;
+}
+inline void CudaMemInfoRequest::_internal_set_cudadeviceid(::int32_t value) {
+  ;
+  _impl_.cudadeviceid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// CudaMemInfoResponse
+
+// float totalMemoryMB = 1;
+inline void CudaMemInfoResponse::clear_totalmemorymb() {
+  _impl_.totalmemorymb_ = 0;
+}
+inline float CudaMemInfoResponse::totalmemorymb() const {
+  // @@protoc_insertion_point(field_get:bridgelink.CudaMemInfoResponse.totalMemoryMB)
+  return _internal_totalmemorymb();
+}
+inline void CudaMemInfoResponse::set_totalmemorymb(float value) {
+  _internal_set_totalmemorymb(value);
+  // @@protoc_insertion_point(field_set:bridgelink.CudaMemInfoResponse.totalMemoryMB)
+}
+inline float CudaMemInfoResponse::_internal_totalmemorymb() const {
+  return _impl_.totalmemorymb_;
+}
+inline void CudaMemInfoResponse::_internal_set_totalmemorymb(float value) {
+  ;
+  _impl_.totalmemorymb_ = value;
+}
+
+// float totalAllocatedMB = 2;
+inline void CudaMemInfoResponse::clear_totalallocatedmb() {
+  _impl_.totalallocatedmb_ = 0;
+}
+inline float CudaMemInfoResponse::totalallocatedmb() const {
+  // @@protoc_insertion_point(field_get:bridgelink.CudaMemInfoResponse.totalAllocatedMB)
+  return _internal_totalallocatedmb();
+}
+inline void CudaMemInfoResponse::set_totalallocatedmb(float value) {
+  _internal_set_totalallocatedmb(value);
+  // @@protoc_insertion_point(field_set:bridgelink.CudaMemInfoResponse.totalAllocatedMB)
+}
+inline float CudaMemInfoResponse::_internal_totalallocatedmb() const {
+  return _impl_.totalallocatedmb_;
+}
+inline void CudaMemInfoResponse::_internal_set_totalallocatedmb(float value) {
+  ;
+  _impl_.totalallocatedmb_ = value;
+}
+
+// float totalAvailableMB = 3;
+inline void CudaMemInfoResponse::clear_totalavailablemb() {
+  _impl_.totalavailablemb_ = 0;
+}
+inline float CudaMemInfoResponse::totalavailablemb() const {
+  // @@protoc_insertion_point(field_get:bridgelink.CudaMemInfoResponse.totalAvailableMB)
+  return _internal_totalavailablemb();
+}
+inline void CudaMemInfoResponse::set_totalavailablemb(float value) {
+  _internal_set_totalavailablemb(value);
+  // @@protoc_insertion_point(field_set:bridgelink.CudaMemInfoResponse.totalAvailableMB)
+}
+inline float CudaMemInfoResponse::_internal_totalavailablemb() const {
+  return _impl_.totalavailablemb_;
+}
+inline void CudaMemInfoResponse::_internal_set_totalavailablemb(float value) {
+  ;
+  _impl_.totalavailablemb_ = value;
 }
 
 #ifdef __GNUC__

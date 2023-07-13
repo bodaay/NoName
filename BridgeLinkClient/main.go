@@ -46,6 +46,16 @@ func main() {
 		log.Fatalf("could not get cuda device count: %v", err)
 	}
 	log.Printf("Cuda Device Count: %v", r2.GetCount())
+	if r2.GetCount() > 0 {
+		r, err := bridgePyTorchClient.GetGPUMemoryInfo(context.Background(), &pb.CudaMemInfoRequest{CudaDeviceID: 0})
+		if err != nil {
+			log.Fatalf("could not get memory info: %v", err)
+		}
+
+		log.Printf("Total Memory: %v", r.GetTotalMemoryMB())
+		log.Printf("Total Allocated: %v", r.GetTotalAllocatedMB())
+		log.Printf("Total Available: %v", r.GetTotalAvailableMB())
+	}
 	waitc := make(chan struct{})
 	go func() {
 		defer close(waitc)

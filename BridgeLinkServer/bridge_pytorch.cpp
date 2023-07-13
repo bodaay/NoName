@@ -15,3 +15,19 @@ Status PyTorchServiceImpl::GetCudaDeviceCount(
     reply->set_count(torch_cuda_device_count()); 
     return Status::OK;
 }
+
+
+Status PyTorchServiceImpl::GetGPUMemoryInfo(
+    ServerContext* context, 
+    const CudaMemInfoRequest* request, 
+    CudaMemInfoResponse* reply) {
+    
+    int deviceId = request->cudadeviceid();
+    MemoryStatus status = getGPUMemoryStatus(deviceId);
+
+    reply->set_totalmemorymb(status.total);
+    reply->set_totalallocatedmb(status.allocated);
+    reply->set_totalavailablemb(status.available);
+
+    return Status::OK;
+}

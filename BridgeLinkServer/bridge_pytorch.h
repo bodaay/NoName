@@ -12,16 +12,22 @@ using bridgelink::CudaAvailableRequest; //for the new service
 using bridgelink::CudaAvailableResponse; //for the new service
 using bridgelink::CudaDeviceCountRequest; //for the new service
 using bridgelink::CudaDeviceCountResponse; //for the new service
+using bridgelink::CudaMemInfoRequest;
+using bridgelink::CudaMemInfoResponse;
 
 class PyTorchServiceImpl final : public PyTorchService::Service {
 public:
-    Status IsCudaAvailable(
-         ServerContext* context, 
-         const CudaAvailableRequest* request, 
-         CudaAvailableResponse* reply) override;
+     Status IsCudaAvailable(
+          ServerContext* context, 
+          const CudaAvailableRequest* request, 
+          CudaAvailableResponse* reply) override;
 
-    Status GetCudaDeviceCount(
-         ServerContext* context, 
-         const CudaDeviceCountRequest* request, 
-         CudaDeviceCountResponse* reply) override;
+     Status GetCudaDeviceCount(
+          ServerContext* context, 
+          const CudaDeviceCountRequest* request, 
+          CudaDeviceCountResponse* reply) override;
+     Status GetGPUMemoryInfo(
+          ServerContext* context, 
+          const CudaMemInfoRequest* request, 
+          CudaMemInfoResponse* reply) override;
 };

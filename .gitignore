@@ -7,17 +7,17 @@ libgrpc/INSTALL/*
 BridgeLinkServer/build/*
 BridgeLinkServer/out/*
 
-loaders/exllama/repo/*
-loaders/exllama/build/*
+_not_used_loaders/exllama/repo/*
+_not_used_loaders/exllama/build/*
 
-loaders/autogptq/repo/*
-loaders/autogptq/build/*
+_not_used_loaders/autogptq/repo/*
+_not_used_loaders/autogptq/build/*
 
-loaders/gotorch/build/
+_not_used_loaders/gotorch/build/
 
 
-loaders/out/*
+_not_used_loaders/out/*
 
-loaders/bridge/grpc/*
-loaders/bridge/build/*
-loaders/bridge/PACKAGES/
+_not_used_loaders/bridge/grpc/*
+_not_used_loaders/bridge/build/*
+_not_used_loaders/bridge/PACKAGES/

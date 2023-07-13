@@ -49,6 +49,13 @@ class PyTorchService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaDeviceCountResponse>> PrepareAsyncGetCudaDeviceCount(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaDeviceCountResponse>>(PrepareAsyncGetCudaDeviceCountRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::bridgelink::CudaMemInfoResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaMemInfoResponse>> AsyncGetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaMemInfoResponse>>(AsyncGetGPUMemoryInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaMemInfoResponse>> PrepareAsyncGetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaMemInfoResponse>>(PrepareAsyncGetGPUMemoryInfoRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -56,6 +63,8 @@ class PyTorchService final {
       virtual void IsCudaAvailable(::grpc::ClientContext* context, const ::bridgelink::CudaAvailableRequest* request, ::bridgelink::CudaAvailableResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetCudaDeviceCount(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest* request, ::bridgelink::CudaDeviceCountResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetCudaDeviceCount(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest* request, ::bridgelink::CudaDeviceCountResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -65,6 +74,8 @@ class PyTorchService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaAvailableResponse>* PrepareAsyncIsCudaAvailableRaw(::grpc::ClientContext* context, const ::bridgelink::CudaAvailableRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaDeviceCountResponse>* AsyncGetCudaDeviceCountRaw(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaDeviceCountResponse>* PrepareAsyncGetCudaDeviceCountRaw(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaMemInfoResponse>* AsyncGetGPUMemoryInfoRaw(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::bridgelink::CudaMemInfoResponse>* PrepareAsyncGetGPUMemoryInfoRaw(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -83,6 +94,13 @@ class PyTorchService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaDeviceCountResponse>> PrepareAsyncGetCudaDeviceCount(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaDeviceCountResponse>>(PrepareAsyncGetCudaDeviceCountRaw(context, request, cq));
     }
+    ::grpc::Status GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::bridgelink::CudaMemInfoResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>> AsyncGetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>>(AsyncGetGPUMemoryInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>> PrepareAsyncGetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>>(PrepareAsyncGetGPUMemoryInfoRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -90,6 +108,8 @@ class PyTorchService final {
       void IsCudaAvailable(::grpc::ClientContext* context, const ::bridgelink::CudaAvailableRequest* request, ::bridgelink::CudaAvailableResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetCudaDeviceCount(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest* request, ::bridgelink::CudaDeviceCountResponse* response, std::function<void(::grpc::Status)>) override;
       void GetCudaDeviceCount(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest* request, ::bridgelink::CudaDeviceCountResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetGPUMemoryInfo(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -105,8 +125,11 @@ class PyTorchService final {
     ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaAvailableResponse>* PrepareAsyncIsCudaAvailableRaw(::grpc::ClientContext* context, const ::bridgelink::CudaAvailableRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaDeviceCountResponse>* AsyncGetCudaDeviceCountRaw(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaDeviceCountResponse>* PrepareAsyncGetCudaDeviceCountRaw(::grpc::ClientContext* context, const ::bridgelink::CudaDeviceCountRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>* AsyncGetGPUMemoryInfoRaw(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::bridgelink::CudaMemInfoResponse>* PrepareAsyncGetGPUMemoryInfoRaw(::grpc::ClientContext* context, const ::bridgelink::CudaMemInfoRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_IsCudaAvailable_;
     const ::grpc::internal::RpcMethod rpcmethod_GetCudaDeviceCount_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetGPUMemoryInfo_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -116,6 +139,7 @@ class PyTorchService final {
     virtual ~Service();
     virtual ::grpc::Status IsCudaAvailable(::grpc::ServerContext* context, const ::bridgelink::CudaAvailableRequest* request, ::bridgelink::CudaAvailableResponse* response);
     virtual ::grpc::Status GetCudaDeviceCount(::grpc::ServerContext* context, const ::bridgelink::CudaDeviceCountRequest* request, ::bridgelink::CudaDeviceCountResponse* response);
+    virtual ::grpc::Status GetGPUMemoryInfo(::grpc::ServerContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_IsCudaAvailable : public BaseClass {
@@ -157,7 +181,27 @@ class PyTorchService final {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_IsCudaAvailable<WithAsyncMethod_GetCudaDeviceCount<Service > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_GetGPUMemoryInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetGPUMemoryInfo() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_GetGPUMemoryInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetGPUMemoryInfo(::grpc::ServerContext* /*context*/, const ::bridgelink::CudaMemInfoRequest* /*request*/, ::bridgelink::CudaMemInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetGPUMemoryInfo(::grpc::ServerContext* context, ::bridgelink::CudaMemInfoRequest* request, ::grpc::ServerAsyncResponseWriter< ::bridgelink::CudaMemInfoResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_IsCudaAvailable<WithAsyncMethod_GetCudaDeviceCount<WithAsyncMethod_GetGPUMemoryInfo<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_IsCudaAvailable : public BaseClass {
    private:
@@ -212,7 +256,34 @@ class PyTorchService final {
     virtual ::grpc::ServerUnaryReactor* GetCudaDeviceCount(
       ::grpc::CallbackServerContext* /*context*/, const ::bridgelink::CudaDeviceCountRequest* /*request*/, ::bridgelink::CudaDeviceCountResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_IsCudaAvailable<WithCallbackMethod_GetCudaDeviceCount<Service > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetGPUMemoryInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetGPUMemoryInfo() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::bridgelink::CudaMemInfoRequest* request, ::bridgelink::CudaMemInfoResponse* response) { return this->GetGPUMemoryInfo(context, request, response); }));}
+    void SetMessageAllocatorFor_GetGPUMemoryInfo(
+        ::grpc::MessageAllocator< ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetGPUMemoryInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetGPUMemoryInfo(::grpc::ServerContext* /*context*/, const ::bridgelink::CudaMemInfoRequest* /*request*/, ::bridgelink::CudaMemInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetGPUMemoryInfo(
+      ::grpc::CallbackServerContext* /*context*/, const ::bridgelink::CudaMemInfoRequest* /*request*/, ::bridgelink::CudaMemInfoResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_IsCudaAvailable<WithCallbackMethod_GetCudaDeviceCount<WithCallbackMethod_GetGPUMemoryInfo<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_IsCudaAvailable : public BaseClass {
@@ -244,6 +315,23 @@ class PyTorchService final {
     }
     // disable synchronous version of this method
     ::grpc::Status GetCudaDeviceCount(::grpc::ServerContext* /*context*/, const ::bridgelink::CudaDeviceCountRequest* /*request*/, ::bridgelink::CudaDeviceCountResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetGPUMemoryInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetGPUMemoryInfo() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_GetGPUMemoryInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetGPUMemoryInfo(::grpc::ServerContext* /*context*/, const ::bridgelink::CudaMemInfoRequest* /*request*/, ::bridgelink::CudaMemInfoResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -289,6 +377,26 @@ class PyTorchService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_GetGPUMemoryInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetGPUMemoryInfo() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_GetGPUMemoryInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetGPUMemoryInfo(::grpc::ServerContext* /*context*/, const ::bridgelink::CudaMemInfoRequest* /*request*/, ::bridgelink::CudaMemInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetGPUMemoryInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_IsCudaAvailable : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -330,6 +438,28 @@ class PyTorchService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* GetCudaDeviceCount(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetGPUMemoryInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetGPUMemoryInfo() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetGPUMemoryInfo(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetGPUMemoryInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetGPUMemoryInfo(::grpc::ServerContext* /*context*/, const ::bridgelink::CudaMemInfoRequest* /*request*/, ::bridgelink::CudaMemInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetGPUMemoryInfo(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -386,9 +516,36 @@ class PyTorchService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetCudaDeviceCount(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::bridgelink::CudaDeviceCountRequest,::bridgelink::CudaDeviceCountResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_IsCudaAvailable<WithStreamedUnaryMethod_GetCudaDeviceCount<Service > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetGPUMemoryInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetGPUMemoryInfo() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::bridgelink::CudaMemInfoRequest, ::bridgelink::CudaMemInfoResponse>* streamer) {
+                       return this->StreamedGetGPUMemoryInfo(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetGPUMemoryInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetGPUMemoryInfo(::grpc::ServerContext* /*context*/, const ::bridgelink::CudaMemInfoRequest* /*request*/, ::bridgelink::CudaMemInfoResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetGPUMemoryInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::bridgelink::CudaMemInfoRequest,::bridgelink::CudaMemInfoResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_IsCudaAvailable<WithStreamedUnaryMethod_GetCudaDeviceCount<WithStreamedUnaryMethod_GetGPUMemoryInfo<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_IsCudaAvailable<WithStreamedUnaryMethod_GetCudaDeviceCount<Service > > StreamedService;
+  typedef WithStreamedUnaryMethod_IsCudaAvailable<WithStreamedUnaryMethod_GetCudaDeviceCount<WithStreamedUnaryMethod_GetGPUMemoryInfo<Service > > > StreamedService;
 };
 
 }  // namespace bridgelink
